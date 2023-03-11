@@ -1,0 +1,25 @@
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.wait import WebDriverWait
+
+from orange_HRM_project_2.pages.orange_hrm_web_elements import OrangeHrmElements
+
+
+class PimPage:
+    present_elements = []
+
+    def __init__(self, driver):
+        self.driver = driver
+
+    def click_pim(self):
+        self.driver.find_element(By.LINK_TEXT, OrangeHrmElements.PIM_module_link_text).click()
+
+    def click_new_employee_add_button(self):
+        self.driver.find_element(By.XPATH, OrangeHrmElements.new_employee_add_button_XPATH).click()
+
+    def enter_employee_name(self, firstname, lastname):
+        self.driver.find_element(By.XPATH, OrangeHrmElements.employee_first_name_XPATH).send_keys(firstname)
+        self.driver.find_element(By.XPATH, OrangeHrmElements.employee_last_name_XPATH).send_keys(lastname)
+
+    def click_save_button(self):
+        self.driver.find_element(By.XPATH, OrangeHrmElements.save_button_XPATH).click()
